@@ -12,11 +12,12 @@ config_version=5
 
 config/name="Shovel"
 run/main_scene="uid://bku3xklxx3idi"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0.388235, 0.388235, 0.384314, 1)
 boot_splash/use_filter=false
-boot_splash/image="uid://gf5682ev8bcb"
-config/icon="uid://gf5682ev8bcb"
+boot_splash/image="uid://13qm7pgfq2bo"
+config/icon="uid://13qm7pgfq2bo"
 
 [display]
 

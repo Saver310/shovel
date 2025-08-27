@@ -1,11 +1,11 @@
 [gd_scene load_steps=41 format=4 uid="uid://bku3xklxx3idi"]
 
-[ext_resource type="Texture2D" uid="uid://btlh1kjjfy5ia" path="res://battlecity.png" id="1_0fbet"]
-[ext_resource type="Script" uid="uid://ca7elsq10a5pg" path="res://control.gd" id="1_qtu10"]
-[ext_resource type="Texture2D" uid="uid://c21u564qvdgap" path="res://battlecity_selected.png" id="2_62e2m"]
-[ext_resource type="Texture2D" uid="uid://8vly5dt8gryu" path="res://up.png" id="4_kbped"]
-[ext_resource type="Texture2D" uid="uid://cc284k46pk8wp" path="res://down.png" id="5_fj5cn"]
-[ext_resource type="Texture2D" uid="uid://cb7u8a1wie586" path="res://cursor_editor.png" id="6_fj5cn"]
+[ext_resource type="Texture2D" uid="uid://bt3ovg6i73eju" path="res://battlecity.png" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://d2b0xyfxqtnjg" path="res://control.gd" id="1_qtu10"]
+[ext_resource type="Texture2D" uid="uid://c0y4j7sfpksb" path="res://battlecity_selected.png" id="2_62e2m"]
+[ext_resource type="Texture2D" uid="uid://cx46fkrlyt4sp" path="res://up.png" id="4_kbped"]
+[ext_resource type="Texture2D" uid="uid://csi200fesuogn" path="res://down.png" id="5_fj5cn"]
+[ext_resource type="Texture2D" uid="uid://hpwroj4il4cp" path="res://cursor_editor.png" id="6_fj5cn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbped"]
 
@@ -241,6 +241,7 @@ texture_normal = SubResource("AtlasTexture_ee4bf")
 texture_pressed = SubResource("AtlasTexture_kbped")
 
 [node name="TileButton3" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 472.0
 offset_top = 144.0
 offset_right = 488.0
@@ -252,6 +253,7 @@ texture_normal = SubResource("AtlasTexture_6a6wx")
 texture_pressed = SubResource("AtlasTexture_sky72")
 
 [node name="TileButton4" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 472.0
 offset_top = 192.0
 offset_right = 488.0
@@ -263,6 +265,7 @@ texture_normal = SubResource("AtlasTexture_0ytqx")
 texture_pressed = SubResource("AtlasTexture_pxugv")
 
 [node name="TileButton5" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 472.0
 offset_top = 240.0
 offset_right = 488.0
@@ -274,6 +277,7 @@ texture_normal = SubResource("AtlasTexture_g31lc")
 texture_pressed = SubResource("AtlasTexture_am1vj")
 
 [node name="TileButton6" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 48.0
 offset_right = 536.0
@@ -285,6 +289,7 @@ texture_normal = SubResource("AtlasTexture_v61lp")
 texture_pressed = SubResource("AtlasTexture_dgp6r")
 
 [node name="TileButton7" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 96.0
 offset_right = 536.0
@@ -296,6 +301,7 @@ texture_normal = SubResource("AtlasTexture_858bn")
 texture_pressed = SubResource("AtlasTexture_2pj6v")
 
 [node name="TileButton8" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 144.0
 offset_right = 536.0
@@ -307,6 +313,7 @@ texture_normal = SubResource("AtlasTexture_knq72")
 texture_pressed = SubResource("AtlasTexture_xvdhi")
 
 [node name="TileButton9" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 192.0
 offset_right = 536.0
@@ -318,6 +325,7 @@ texture_normal = SubResource("AtlasTexture_w5605")
 texture_pressed = SubResource("AtlasTexture_87wg0")
 
 [node name="TileButton10" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 240.0
 offset_right = 536.0
@@ -329,6 +337,7 @@ texture_normal = SubResource("AtlasTexture_oq4si")
 texture_pressed = SubResource("AtlasTexture_m4egf")
 
 [node name="TileButton11" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 568.0
 offset_top = 48.0
 offset_right = 584.0
@@ -340,6 +349,7 @@ texture_normal = SubResource("AtlasTexture_eh0v1")
 texture_pressed = SubResource("AtlasTexture_pi4e7")
 
 [node name="TileButton12" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 568.0
 offset_top = 96.0
 offset_right = 584.0
@@ -351,6 +361,7 @@ texture_normal = SubResource("AtlasTexture_kuuv8")
 texture_pressed = SubResource("AtlasTexture_ou021")
 
 [node name="TileButton13" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 568.0
 offset_top = 144.0
 offset_right = 584.0
@@ -372,6 +383,7 @@ text = "Export Map"
 flat = true
 
 [node name="ImportButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 448.0
 offset_top = 296.0
 offset_right = 624.0
