@@ -1,0 +1,461 @@
+[gd_scene load_steps=41 format=4 uid="uid://bku3xklxx3idi"]
+
+[ext_resource type="Texture2D" uid="uid://btlh1kjjfy5ia" path="res://battlecity.png" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://ca7elsq10a5pg" path="res://control.gd" id="1_qtu10"]
+[ext_resource type="Texture2D" uid="uid://c21u564qvdgap" path="res://battlecity_selected.png" id="2_62e2m"]
+[ext_resource type="Texture2D" uid="uid://8vly5dt8gryu" path="res://up.png" id="4_kbped"]
+[ext_resource type="Texture2D" uid="uid://cc284k46pk8wp" path="res://down.png" id="5_fj5cn"]
+[ext_resource type="Texture2D" uid="uid://cb7u8a1wie586" path="res://cursor_editor.png" id="6_fj5cn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbped"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iy58a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fj5cn"]
+
+[sub_resource type="Theme" id="Theme_iy58a"]
+LineEdit/font_sizes/font_size = 8
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_kbped")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_kbped")
+LineEdit/styles/read_only = SubResource("StyleBoxEmpty_kbped")
+RichTextLabel/colors/table_border = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_iy58a")
+SpinBox/styles/down_background = SubResource("StyleBoxEmpty_fj5cn")
+SpinBox/styles/down_background_disabled = SubResource("StyleBoxEmpty_fj5cn")
+SpinBox/styles/down_background_hovered = SubResource("StyleBoxEmpty_fj5cn")
+SpinBox/styles/down_background_pressed = SubResource("StyleBoxEmpty_fj5cn")
+SpinBox/styles/field_and_buttons_separator = SubResource("StyleBoxEmpty_fj5cn")
+SpinBox/styles/up_background = SubResource("StyleBoxEmpty_fj5cn")
+SpinBox/styles/up_background_disabled = SubResource("StyleBoxEmpty_fj5cn")
+SpinBox/styles/up_background_hovered = SubResource("StyleBoxEmpty_fj5cn")
+SpinBox/styles/up_background_pressed = SubResource("StyleBoxEmpty_fj5cn")
+SpinBox/styles/up_down_buttons_separator = SubResource("StyleBoxEmpty_fj5cn")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_62e2m"]
+texture = ExtResource("1_0fbet")
+16:0/0 = 0
+16:0/0/custom_data_0 = "4"
+17:0/0 = 0
+17:0/0/custom_data_0 = "0"
+18:0/0 = 0
+18:0/0/custom_data_0 = "1"
+19:0/0 = 0
+19:0/0/custom_data_0 = "2"
+20:0/0 = 0
+20:0/0/custom_data_0 = "3"
+20:1/0 = 0
+20:1/0/custom_data_0 = "8"
+19:1/0 = 0
+19:1/0/custom_data_0 = "7"
+18:1/0 = 0
+18:1/0/custom_data_0 = "6"
+17:1/0 = 0
+17:1/0/custom_data_0 = "5"
+16:1/0 = 0
+16:1/0/custom_data_0 = "9"
+16:2/0 = 0
+16:2/0/custom_data_0 = "A"
+17:2/0 = 0
+17:2/0/custom_data_0 = "B"
+18:2/0 = 0
+18:2/0/custom_data_0 = "C"
+21:0/0 = 0
+21:0/0/custom_data_0 = "D"
+
+[sub_resource type="TileSet" id="TileSet_qtu10"]
+custom_data_layer_0/name = "hexen"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("TileSetAtlasSource_62e2m")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj5cn"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(352, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy58a"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(352, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fbet"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtu10"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee4bf"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(272, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbped"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(272, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a6wx"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(288, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sky72"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(288, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ytqx"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(304, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxugv"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(304, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g31lc"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(320, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am1vj"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(320, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v61lp"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(256, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgp6r"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(256, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_858bn"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(272, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pj6v"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(272, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knq72"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(288, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvdhi"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(288, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5605"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(304, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87wg0"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(304, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq4si"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(320, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4egf"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(320, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh0v1"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(256, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi4e7"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(256, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuuv8"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(272, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou021"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(272, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fl80"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(288, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jbwv"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(288, 32, 16, 16)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_iy58a")
+script = ExtResource("1_qtu10")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-8, 0)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAABAAEAAAAVAAAAAAABAAIAAAAVAAAAAAABAAMAAAAVAAAAAAABAAQAAAAVAAAAAAABAAUAAAAVAAAAAAABAAYAAAAVAAAAAAABAAcAAAASAAAAAAABAAgAAAAUAAEAAAABAAkAAAAVAAAAAAABAAoAAAAVAAAAAAABAAsAAAAVAAAAAAABAAwAAAAVAAAAAAABAA0AAAAVAAAAAAACAAEAAAAVAAAAAAACAAIAAAAQAAAAAAACAAMAAAAQAAAAAAACAAQAAAAQAAAAAAACAAUAAAAQAAAAAAACAAYAAAAUAAAAAAACAAcAAAAVAAAAAAACAAgAAAAVAAAAAAACAAkAAAASAAAAAAACAAoAAAAQAAAAAAACAAsAAAAQAAAAAAACAAwAAAAQAAAAAAACAA0AAAAVAAAAAAADAAEAAAAVAAAAAAADAAIAAAAVAAAAAAADAAMAAAAVAAAAAAADAAQAAAAVAAAAAAADAAUAAAAVAAAAAAADAAcAAAASAAAAAAADAAgAAAAUAAAAAAADAAkAAAAVAAAAAAADAAoAAAAVAAAAAAADAAsAAAAVAAAAAAADAAwAAAAVAAAAAAADAA0AAAAVAAAAAAAEAAEAAAAVAAAAAAAEAAIAAAAQAAAAAAAEAAMAAAAQAAAAAAAEAAQAAAAQAAAAAAAEAAUAAAAQAAAAAAAEAAYAAAAUAAAAAAAEAAcAAAASAAAAAAAEAAgAAAAUAAAAAAAEAAkAAAASAAAAAAAEAAoAAAAQAAAAAAAEAAsAAAAQAAAAAAAEAAwAAAAQAAAAAAAEAA0AAAAVAAAAAAAFAAEAAAAVAAAAAAAFAAIAAAAVAAAAAAAFAAMAAAAVAAAAAAAFAAQAAAAVAAAAAAAFAAUAAAAVAAAAAAAFAAYAAAAVAAAAAAAFAAcAAAAVAAAAAAAFAAgAAAAVAAAAAAAFAAkAAAAVAAAAAAAFAAoAAAAVAAAAAAAFAAsAAAAVAAAAAAAFAAwAAAAVAAAAAAAFAA0AAAAVAAAAAAAGAAEAAAAVAAAAAAAGAAIAAAAQAAAAAAAGAAMAAAAQAAAAAAAGAAQAAAAQAAAAAAAGAAUAAAAUAAAAAAAGAAYAAAASAAAAAAAGAAcAAAAUAAAAAAAGAAgAAAASAAAAAAAGAAkAAAAQAAAAAAAGAAoAAAAQAAAAAAAGAAsAAAAUAAAAAAAGAAwAAAAVAAAAAAAGAA0AAAAVAAAAAAAHAAEAAAAVAAAAAAAHAAIAAAAVAAAAAAAHAAMAAAAVAAAAAAAHAAQAAAAQAAEAAAAHAAUAAAAVAAAAAAAHAAYAAAAVAAAAAAAHAAcAAAAVAAAAAAAHAAgAAAAVAAAAAAAHAAkAAAAQAAAAAAAHAAoAAAAVAAAAAAAHAAsAAAAVAAAAAAAHAAwAAAAVAAAAAAAHAA0AAAAVAAAAAAAIAAEAAAAVAAAAAAAIAAIAAAAQAAAAAAAIAAMAAAAQAAAAAAAIAAQAAAAQAAAAAAAIAAUAAAAUAAAAAAAIAAYAAAASAAAAAAAIAAcAAAAUAAAAAAAIAAgAAAASAAAAAAAIAAkAAAAQAAAAAAAIAAoAAAAQAAAAAAAIAAsAAAAUAAAAAAAIAAwAAAAVAAAAAAAIAA0AAAAVAAAAAAAJAAEAAAAVAAAAAAAJAAMAAAAVAAAAAAAJAAQAAAAVAAAAAAAJAAUAAAAVAAAAAAAJAAYAAAAVAAAAAAAJAAcAAAAVAAAAAAAJAAgAAAAVAAAAAAAJAAkAAAAVAAAAAAAJAAoAAAAVAAAAAAAJAAsAAAAVAAAAAAAJAAwAAAAVAAAAAAAJAA0AAAAVAAAAAAAKAAEAAAAVAAAAAAAKAAIAAAAQAAAAAAAKAAMAAAAQAAAAAAAKAAQAAAAQAAAAAAAKAAUAAAAQAAAAAAAKAAYAAAAUAAAAAAAKAAcAAAASAAAAAAAKAAgAAAAUAAAAAAAKAAkAAAASAAAAAAAKAAoAAAAQAAAAAAAKAAsAAAAQAAAAAAAKAAwAAAAQAAAAAAAKAA0AAAAVAAAAAAALAAEAAAAVAAAAAAALAAIAAAAVAAAAAAALAAMAAAAVAAAAAAALAAQAAAAVAAAAAAALAAUAAAAVAAAAAAALAAYAAAAVAAAAAAALAAcAAAASAAAAAAALAAgAAAAUAAAAAAALAAkAAAAVAAAAAAALAAoAAAAVAAAAAAALAAsAAAAVAAAAAAALAAwAAAAVAAAAAAALAA0AAAAVAAAAAAAMAAEAAAAVAAAAAAAMAAIAAAAQAAAAAAAMAAMAAAAQAAAAAAAMAAQAAAAQAAAAAAAMAAUAAAAQAAAAAAAMAAYAAAAUAAAAAAAMAAcAAAAVAAAAAAAMAAgAAAAVAAAAAAAMAAkAAAASAAAAAAAMAAoAAAAQAAAAAAAMAAsAAAAQAAAAAAAMAAwAAAAQAAAAAAAMAA0AAAAVAAAAAAANAAEAAAAVAAAAAAANAAIAAAAVAAAAAAANAAMAAAAVAAAAAAANAAQAAAAVAAAAAAANAAUAAAAVAAAAAAANAAYAAAAVAAAAAAANAAcAAAASAAAAAAANAAgAAAAUAAEAAAANAAkAAAAVAAAAAAANAAoAAAAVAAAAAAANAAsAAAAVAAAAAAANAAwAAAAVAAAAAAANAA0AAAAVAAAAAAAJAAIAAAAVAAAAAAADAAYAAAAVAAAAAAA=")
+tile_set = SubResource("TileSet_qtu10")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 32.0
+offset_right = 624.0
+offset_bottom = 448.0
+color = Color(0, 0, 0, 1)
+
+[node name="EraserButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 192.0
+offset_right = 584.0
+offset_bottom = 208.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_fj5cn")
+texture_pressed = SubResource("AtlasTexture_iy58a")
+
+[node name="TileButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 48.0
+offset_right = 488.0
+offset_bottom = 64.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_0fbet")
+texture_pressed = SubResource("AtlasTexture_qtu10")
+
+[node name="TileButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 96.0
+offset_right = 488.0
+offset_bottom = 112.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_ee4bf")
+texture_pressed = SubResource("AtlasTexture_kbped")
+
+[node name="TileButton3" type="TextureButton" parent="."]
+offset_left = 472.0
+offset_top = 144.0
+offset_right = 488.0
+offset_bottom = 160.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_6a6wx")
+texture_pressed = SubResource("AtlasTexture_sky72")
+
+[node name="TileButton4" type="TextureButton" parent="."]
+offset_left = 472.0
+offset_top = 192.0
+offset_right = 488.0
+offset_bottom = 208.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_0ytqx")
+texture_pressed = SubResource("AtlasTexture_pxugv")
+
+[node name="TileButton5" type="TextureButton" parent="."]
+offset_left = 472.0
+offset_top = 240.0
+offset_right = 488.0
+offset_bottom = 256.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_g31lc")
+texture_pressed = SubResource("AtlasTexture_am1vj")
+
+[node name="TileButton6" type="TextureButton" parent="."]
+offset_left = 520.0
+offset_top = 48.0
+offset_right = 536.0
+offset_bottom = 64.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_v61lp")
+texture_pressed = SubResource("AtlasTexture_dgp6r")
+
+[node name="TileButton7" type="TextureButton" parent="."]
+offset_left = 520.0
+offset_top = 96.0
+offset_right = 536.0
+offset_bottom = 112.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_858bn")
+texture_pressed = SubResource("AtlasTexture_2pj6v")
+
+[node name="TileButton8" type="TextureButton" parent="."]
+offset_left = 520.0
+offset_top = 144.0
+offset_right = 536.0
+offset_bottom = 160.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_knq72")
+texture_pressed = SubResource("AtlasTexture_xvdhi")
+
+[node name="TileButton9" type="TextureButton" parent="."]
+offset_left = 520.0
+offset_top = 192.0
+offset_right = 536.0
+offset_bottom = 208.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_w5605")
+texture_pressed = SubResource("AtlasTexture_87wg0")
+
+[node name="TileButton10" type="TextureButton" parent="."]
+offset_left = 520.0
+offset_top = 240.0
+offset_right = 536.0
+offset_bottom = 256.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_oq4si")
+texture_pressed = SubResource("AtlasTexture_m4egf")
+
+[node name="TileButton11" type="TextureButton" parent="."]
+offset_left = 568.0
+offset_top = 48.0
+offset_right = 584.0
+offset_bottom = 64.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_eh0v1")
+texture_pressed = SubResource("AtlasTexture_pi4e7")
+
+[node name="TileButton12" type="TextureButton" parent="."]
+offset_left = 568.0
+offset_top = 96.0
+offset_right = 584.0
+offset_bottom = 112.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_kuuv8")
+texture_pressed = SubResource("AtlasTexture_ou021")
+
+[node name="TileButton13" type="TextureButton" parent="."]
+offset_left = 568.0
+offset_top = 144.0
+offset_right = 584.0
+offset_bottom = 160.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_3fl80")
+texture_pressed = SubResource("AtlasTexture_8jbwv")
+
+[node name="ExportButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 272.0
+offset_right = 624.0
+offset_bottom = 296.0
+theme_override_font_sizes/font_size = 8
+text = "Export Map"
+flat = true
+
+[node name="ImportButton" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 296.0
+offset_right = 624.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 8
+text = "Import Map"
+flat = true
+
+[node name="RichTextLabel" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 320.0
+offset_right = 624.0
+offset_bottom = 416.0
+theme_override_font_sizes/font_size = 6
+text = "DDDDDDDDDDDDDDD4D4D4D4D4D4DDD4D4D4D4D4D4DDD4D4D494D4D4DDD4D4D3D3D4D4DDD3D3D1D1D3D3DD1D11D3D3D11D1D8D33D1D1D33D8DD1D1D444D1D1DDD4D4D4D4D4D4DDD4D4D3D3D4D4DDD4D4DDDDD4D4DDDDDDDDDDDDDDDD"
+emoji_menu_enabled = false
+wrap_mode = 1
+
+[node name="StageBox" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 416.0
+offset_right = 528.0
+offset_bottom = 448.0
+theme_override_icons/up_disabled = ExtResource("4_kbped")
+theme_override_icons/down = ExtResource("5_fj5cn")
+theme_override_icons/down_hover = ExtResource("5_fj5cn")
+theme_override_icons/down_pressed = ExtResource("5_fj5cn")
+theme_override_icons/down_disabled = ExtResource("5_fj5cn")
+theme_override_icons/up_pressed = ExtResource("4_kbped")
+theme_override_icons/up_hover = ExtResource("4_kbped")
+theme_override_icons/up = ExtResource("4_kbped")
+min_value = 1.0
+max_value = 36.0
+value = 1.0
+rounded = true
+alignment = 1
+prefix = "Stage"
+
+[node name="Label" type="Label" parent="StageBox"]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 176.0
+offset_bottom = 32.0
+text = "308A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 40.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+texture = ExtResource("6_fj5cn")
+stretch_mode = 2
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 440.0
+offset_bottom = 448.0
+border_width = 0.0
+
+[connection signal="pressed" from="EraserButton" to="." method="_on_eraser_button_pressed"]
+[connection signal="pressed" from="TileButton" to="." method="_on_tile_button_pressed"]
+[connection signal="pressed" from="TileButton2" to="." method="_on_tile_button_2_pressed"]
+[connection signal="pressed" from="TileButton3" to="." method="_on_tile_button_3_pressed"]
+[connection signal="pressed" from="TileButton4" to="." method="_on_tile_button_4_pressed"]
+[connection signal="pressed" from="TileButton5" to="." method="_on_tile_button_5_pressed"]
+[connection signal="pressed" from="TileButton6" to="." method="_on_tile_button_6_pressed"]
+[connection signal="pressed" from="TileButton7" to="." method="_on_tile_button_7_pressed"]
+[connection signal="pressed" from="TileButton8" to="." method="_on_tile_button_8_pressed"]
+[connection signal="pressed" from="TileButton9" to="." method="_on_tile_button_9_pressed"]
+[connection signal="pressed" from="TileButton10" to="." method="_on_tile_button_10_pressed"]
+[connection signal="pressed" from="TileButton11" to="." method="_on_tile_button_11_pressed"]
+[connection signal="pressed" from="TileButton12" to="." method="_on_tile_button_12_pressed"]
+[connection signal="pressed" from="TileButton13" to="." method="_on_tile_button_13_pressed"]
+[connection signal="pressed" from="ExportButton" to="." method="_on_export_button_pressed"]
+[connection signal="pressed" from="ImportButton" to="." method="_on_import_button_pressed"]
+[connection signal="value_changed" from="StageBox" to="." method="_on_stage_box_value_changed"]
+[connection signal="mouse_entered" from="ReferenceRect" to="." method="_on_reference_rect_mouse_entered"]
+[connection signal="mouse_exited" from="ReferenceRect" to="." method="_on_reference_rect_mouse_exited"]
