@@ -7,9 +7,19 @@ const dictionaire = {"4" : Vector2i(16,0), "0" : Vector2i(17,0), "1" : Vector2i(
 var atlas_coords = Vector2i(16,0)
 var mode = 0
 var holdy = false
+var blaring_out_loud = false
+var muted = false
 
 func _ready() -> void:
 	toggler(0)
+	if FileAccess.file_exists("user://map.shovel"):
+		$TextEdit.text = FileAccess.get_file_as_string("user://map.shovel")
+		_on_import_button_pressed()
+	if FileAccess.file_exists("user://muted.shovel"):
+		var file = FileAccess.open("user://muted.shovel",FileAccess.READ)
+		_on_mute_button_toggled(bool(file.get_8()))
+		file.close()
+	blaring_out_loud = true
 	
 func _process(_delta: float) -> void:
 	$TextureRect.position = $TileMapLayer.local_to_map($TileMapLayer.get_local_mouse_position()) * 32 - Vector2i(8,0)
@@ -36,7 +46,8 @@ func _input(event: InputEvent) -> void:
 
 # if there's a better way of doing this you can stone me to death pretty please
 func toggler(which_one : int) -> void:
-	$AudioChange.play()
+	if not muted and blaring_out_loud:
+		$AudioChange.play()
 	var bleh : Array
 	for i in range(14):
 		bleh.insert(i,false)
@@ -108,7 +119,8 @@ func _on_reference_rect_mouse_exited() -> void:
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 
 func _on_export_button_pressed() -> void:
-	$AudioDull.play()
+	if not muted:
+		$AudioDull.play()
 	var bleh : Array
 	for j in range(13):
 		for i in range(13):
@@ -120,6 +132,9 @@ func _on_export_button_pressed() -> void:
 	for l in bleh.size():
 		stingy_string = stingy_string + bleh[l]
 	$TextEdit.text = stingy_string
+	var file = FileAccess.open("user://map.shovel",FileAccess.WRITE)
+	file.store_string($TextEdit.text)
+	file.close()
 
 # same as the toggler function
 func _on_import_button_pressed() -> void:
@@ -127,13 +142,14 @@ func _on_import_button_pressed() -> void:
 	var stingy_string : String = $TextEdit.text
 	var busted : bool = false
 	var previous_tilemap = $TileMapLayer.tile_map_data
-	if stingy_string.length() == 182:
+	if stingy_string.length() == 182 or stingy_string.length() == 272:
+		if stingy_string.length() == 272:
+			stingy_string = stingy_string.replace(" ", '')
 		for p in range(13):
 			array_of_death.append(14+p*14-1)
 		for o in array_of_death.size():
 			stingy_string[array_of_death[o]] = "Æ"
 		stingy_string = stingy_string.replace("Æ", '')
-		var ugly : Array
 		for j in range(13):
 			for i in range(13):
 				if dictionaire.has(stingy_string[i+j*13]):
@@ -142,19 +158,67 @@ func _on_import_button_pressed() -> void:
 					busted = true
 					pass
 		if not busted:
-			if not $TileMapLayer.tile_map_data == previous_tilemap:
-				$AudioSuccess.play()
-			else:
-				$AudioDull.play()
+			if blaring_out_loud:
+				if not $TileMapLayer.tile_map_data == previous_tilemap:
+					$ErrorLabel.text = "MAP SUCCESSFULLY IMPORTED"
+					$Timer.start()
+					if not muted:
+						$AudioSuccess.play()
+				else:
+					$ErrorLabel.text = "MAP ALREADY IMPORTED"
+					$Timer.start()
+					if not muted:
+						$AudioDull.play()
 		else:
-			$AudioInvalid.play()
+			$ErrorLabel.text = "INVALID CHARACTERS FOUND"
+			$Timer.start()
+			if not muted:
+				$AudioInvalid.play()
 			$TileMapLayer.tile_map_data = previous_tilemap
 	else:
-		$AudioInvalid.play()
+		$ErrorLabel.text = "INVALID LENGTH"
+		$Timer.start()
+		if not muted:
+			$AudioInvalid.play()
 
 func _on_stage_box_value_changed(value: int) -> void:
-	$AudioCount.play()
+	if not muted:
+		$AudioCount.play()
 	$StageBox/Label.text = "%X" % (12426 + (value - 1) * 91)
 
 func _on_clipboard_button_pressed() -> void:
+	if not muted:
+		$AudioSuccess.play()
+	$ErrorLabel.text = "COPIED MAP TO CLIPBOARD"
+	$Timer.start()
 	DisplayServer.clipboard_set($TextEdit.text)
+
+func _on_timer_timeout() -> void:
+	$ErrorLabel.text = ""
+
+func _on_mute_button_toggled(toggled_on: bool) -> void:
+	# nasty
+	if toggled_on:
+		$MuteButton.texture_normal = $MuteButton.texture_pressed
+	else:
+		$MuteButton.texture_normal = $MuteButton.texture_disabled
+	muted = toggled_on
+	if !toggled_on and blaring_out_loud:
+		$AudioSuccess.play()
+	else:
+		$AudioSuccess.stop()
+	var file = FileAccess.open("user://muted.shovel",FileAccess.WRITE)
+	file.store_8(int(toggled_on))
+	file.close()
+
+# SCALING HELL YEAH!!!
+func _on_resized() -> void:
+	var current_width = self.size.x / 640
+	var current_height = self.size.y / 480
+	if current_height < current_width:
+		$Camera2D.zoom = Vector2(current_height,current_height)
+	else:
+		$Camera2D.zoom = Vector2(current_width,current_width)
+	if self.size.x < 480 or self.size.y < 360:
+		$ErrorLabel.text = "GET A BETTER MONITOR"
+		$Timer.start()

@@ -1,11 +1,13 @@
-[gd_scene load_steps=51 format=4 uid="uid://bku3xklxx3idi"]
+[gd_scene load_steps=53 format=4 uid="uid://bku3xklxx3idi"]
 
 [ext_resource type="Texture2D" uid="uid://bt3ovg6i73eju" path="res://battlecity.png" id="1_0fbet"]
 [ext_resource type="FontFile" uid="uid://den7xe7fqoot8" path="res://font.woff2" id="1_eh0v1"]
 [ext_resource type="Script" uid="uid://d2b0xyfxqtnjg" path="res://control.gd" id="1_qtu10"]
 [ext_resource type="Texture2D" uid="uid://c0y4j7sfpksb" path="res://battlecity_selected.png" id="2_62e2m"]
+[ext_resource type="Texture2D" uid="uid://b335oj4aeh0rb" path="res://speaker1.png" id="4_g31lc"]
 [ext_resource type="Texture2D" uid="uid://cx46fkrlyt4sp" path="res://up.png" id="4_kbped"]
 [ext_resource type="Texture2D" uid="uid://csi200fesuogn" path="res://down.png" id="5_fj5cn"]
+[ext_resource type="Texture2D" uid="uid://de8wkmw36d01g" path="res://speaker2.png" id="5_knq72"]
 [ext_resource type="Texture2D" uid="uid://hpwroj4il4cp" path="res://cursor_editor.png" id="6_fj5cn"]
 [ext_resource type="AudioStream" uid="uid://chvklunqsqdrf" path="res://sfx/Battle City SFX (4).wav" id="7_6a6wx"]
 [ext_resource type="AudioStream" uid="uid://cwho3u6as18k5" path="res://sfx/Battle City SFX (11).wav" id="7_iy58a"]
@@ -250,6 +252,17 @@ offset_right = 624.0
 offset_bottom = 448.0
 color = Color(0, 0, 0, 1)
 
+[node name="MuteButton" type="TextureButton" parent="."]
+offset_left = 608.0
+offset_right = 624.0
+offset_bottom = 16.0
+scale = Vector2(2, 2)
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("4_g31lc")
+texture_pressed = ExtResource("5_knq72")
+texture_disabled = ExtResource("4_g31lc")
+
 [node name="EraserButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 568.0
@@ -462,7 +475,7 @@ texture_pressed = SubResource("AtlasTexture_b3rfh")
 layout_mode = 0
 offset_left = 448.0
 offset_top = 416.0
-offset_right = 528.0
+offset_right = 544.0
 offset_bottom = 448.0
 theme_override_icons/up_disabled = ExtResource("4_kbped")
 theme_override_icons/down = ExtResource("5_fj5cn")
@@ -481,7 +494,7 @@ prefix = "STAGE"
 
 [node name="Label" type="Label" parent="StageBox"]
 layout_mode = 0
-offset_left = 80.0
+offset_left = 96.0
 offset_right = 144.0
 offset_bottom = 32.0
 text = "308A"
@@ -507,6 +520,15 @@ offset_right = 440.0
 offset_bottom = 448.0
 border_width = 0.0
 
+[node name="ErrorLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 448.0
+offset_right = 640.0
+offset_bottom = 480.0
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="AudioChange" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_6a6wx")
 
@@ -522,6 +544,15 @@ stream = ExtResource("10_0ytqx")
 [node name="AudioDull" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_pxugv")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(320, 240)
+
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="toggled" from="MuteButton" to="." method="_on_mute_button_toggled"]
 [connection signal="pressed" from="EraserButton" to="." method="_on_eraser_button_pressed"]
 [connection signal="pressed" from="TileButton" to="." method="_on_tile_button_pressed"]
 [connection signal="pressed" from="TileButton2" to="." method="_on_tile_button_2_pressed"]
@@ -542,3 +573,4 @@ stream = ExtResource("11_pxugv")
 [connection signal="value_changed" from="StageBox" to="." method="_on_stage_box_value_changed"]
 [connection signal="mouse_entered" from="ReferenceRect" to="." method="_on_reference_rect_mouse_entered"]
 [connection signal="mouse_exited" from="ReferenceRect" to="." method="_on_reference_rect_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
