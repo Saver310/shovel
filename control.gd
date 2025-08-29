@@ -31,9 +31,12 @@ func _input(event: InputEvent) -> void:
 			holdy = true
 		else:
 			holdy = false
+		if not event.pressed and $TextureRect.visible:
+			_on_export_button_pressed()
 
 # if there's a better way of doing this you can stone me to death pretty please
 func toggler(which_one : int) -> void:
+	$AudioChange.play()
 	var bleh : Array
 	for i in range(14):
 		bleh.insert(i,false)
@@ -98,11 +101,14 @@ func _on_tile_button_13_pressed() -> void:
 
 func _on_reference_rect_mouse_entered() -> void:
 	$TextureRect.visible = true
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 
 func _on_reference_rect_mouse_exited() -> void:
 	$TextureRect.visible = false
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 
 func _on_export_button_pressed() -> void:
+	$AudioDull.play()
 	var bleh : Array
 	for j in range(13):
 		for i in range(13):
@@ -113,12 +119,14 @@ func _on_export_button_pressed() -> void:
 	var stingy_string : String
 	for l in bleh.size():
 		stingy_string = stingy_string + bleh[l]
-	$RichTextLabel.text = stingy_string
+	$TextEdit.text = stingy_string
 
 # same as the toggler function
 func _on_import_button_pressed() -> void:
 	var array_of_death : Array
-	var stingy_string : String = $RichTextLabel.text
+	var stingy_string : String = $TextEdit.text
+	var busted : bool = false
+	var previous_tilemap = $TileMapLayer.tile_map_data
 	if stingy_string.length() == 182:
 		for p in range(13):
 			array_of_death.append(14+p*14-1)
@@ -128,7 +136,25 @@ func _on_import_button_pressed() -> void:
 		var ugly : Array
 		for j in range(13):
 			for i in range(13):
-				$TileMapLayer.set_cell(Vector2i(i+1,j+1),0,dictionaire[stingy_string[i+j*13]])
+				if dictionaire.has(stingy_string[i+j*13]):
+					$TileMapLayer.set_cell(Vector2i(i+1,j+1),0,dictionaire[stingy_string[i+j*13]])
+				else:
+					busted = true
+					pass
+		if not busted:
+			if not $TileMapLayer.tile_map_data == previous_tilemap:
+				$AudioSuccess.play()
+			else:
+				$AudioDull.play()
+		else:
+			$AudioInvalid.play()
+			$TileMapLayer.tile_map_data = previous_tilemap
+	else:
+		$AudioInvalid.play()
 
 func _on_stage_box_value_changed(value: int) -> void:
+	$AudioCount.play()
 	$StageBox/Label.text = "%X" % (12426 + (value - 1) * 91)
+
+func _on_clipboard_button_pressed() -> void:
+	DisplayServer.clipboard_set($TextEdit.text)

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chvklunqsqdrf"
+path="res://.godot/imported/Battle City SFX (4).wav-61b4048a07ff9794f5fe07787d8cf818.sample"
+
+[deps]
+
+source_file="res://sfx/Battle City SFX (4).wav"
+dest_files=["res://.godot/imported/Battle City SFX (4).wav-61b4048a07ff9794f5fe07787d8cf818.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

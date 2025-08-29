@@ -1,26 +1,38 @@
-[gd_scene load_steps=41 format=4 uid="uid://bku3xklxx3idi"]
+[gd_scene load_steps=51 format=4 uid="uid://bku3xklxx3idi"]
 
 [ext_resource type="Texture2D" uid="uid://bt3ovg6i73eju" path="res://battlecity.png" id="1_0fbet"]
+[ext_resource type="FontFile" uid="uid://den7xe7fqoot8" path="res://font.woff2" id="1_eh0v1"]
 [ext_resource type="Script" uid="uid://d2b0xyfxqtnjg" path="res://control.gd" id="1_qtu10"]
 [ext_resource type="Texture2D" uid="uid://c0y4j7sfpksb" path="res://battlecity_selected.png" id="2_62e2m"]
 [ext_resource type="Texture2D" uid="uid://cx46fkrlyt4sp" path="res://up.png" id="4_kbped"]
 [ext_resource type="Texture2D" uid="uid://csi200fesuogn" path="res://down.png" id="5_fj5cn"]
 [ext_resource type="Texture2D" uid="uid://hpwroj4il4cp" path="res://cursor_editor.png" id="6_fj5cn"]
+[ext_resource type="AudioStream" uid="uid://chvklunqsqdrf" path="res://sfx/Battle City SFX (4).wav" id="7_6a6wx"]
+[ext_resource type="AudioStream" uid="uid://cwho3u6as18k5" path="res://sfx/Battle City SFX (11).wav" id="7_iy58a"]
+[ext_resource type="AudioStream" uid="uid://bdfqa8hwcpqr8" path="res://sfx/Battle City SFX (12).wav" id="9_sky72"]
+[ext_resource type="AudioStream" uid="uid://whd0hrir7nuc" path="res://sfx/Battle City SFX (1).wav" id="10_0ytqx"]
+[ext_resource type="AudioStream" uid="uid://cqwhq52ix32bn" path="res://sfx/Battle City SFX (5).wav" id="11_pxugv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbped"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iy58a"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fj5cn"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj5cn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101961, 0.101961, 0.101961, 0)
+corner_detail = 1
+
 [sub_resource type="Theme" id="Theme_iy58a"]
+default_font = ExtResource("1_eh0v1")
+Button/font_sizes/font_size = 8
+Label/font_sizes/font_size = 8
 LineEdit/font_sizes/font_size = 8
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_kbped")
 LineEdit/styles/normal = SubResource("StyleBoxEmpty_kbped")
 LineEdit/styles/read_only = SubResource("StyleBoxEmpty_kbped")
-RichTextLabel/colors/table_border = Color(0, 0, 0, 0)
-RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 0)
-RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_iy58a")
 SpinBox/styles/down_background = SubResource("StyleBoxEmpty_fj5cn")
 SpinBox/styles/down_background_disabled = SubResource("StyleBoxEmpty_fj5cn")
 SpinBox/styles/down_background_hovered = SubResource("StyleBoxEmpty_fj5cn")
@@ -31,6 +43,10 @@ SpinBox/styles/up_background_disabled = SubResource("StyleBoxEmpty_fj5cn")
 SpinBox/styles/up_background_hovered = SubResource("StyleBoxEmpty_fj5cn")
 SpinBox/styles/up_background_pressed = SubResource("StyleBoxEmpty_fj5cn")
 SpinBox/styles/up_down_buttons_separator = SubResource("StyleBoxEmpty_fj5cn")
+TextEdit/font_sizes/font_size = 8
+TextEdit/styles/focus = SubResource("StyleBoxFlat_fj5cn")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_fj5cn")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_fj5cn")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_62e2m"]
 texture = ExtResource("1_0fbet")
@@ -67,6 +83,21 @@ texture = ExtResource("1_0fbet")
 custom_data_layer_0/name = "hexen"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_62e2m")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eh0v1"]
+texture = ExtResource("1_0fbet")
+0:0/0 = 0
+0:8/0 = 0
+17:0/0 = 0
+19:0/0 = 0
+18:0/0 = 0
+19:2/0 = 0
+12:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_am1vj"]
+custom_data_layer_0/name = "hexen"
+custom_data_layer_0/type = 4
+sources/2 = SubResource("TileSetAtlasSource_eh0v1")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fj5cn"]
 atlas = ExtResource("1_0fbet")
@@ -180,6 +211,14 @@ region = Rect2(288, 32, 16, 16)
 atlas = ExtResource("2_62e2m")
 region = Rect2(288, 32, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ag6a"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(352, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3rfh"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(352, 16, 16, 16)
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -195,6 +234,13 @@ position = Vector2(-8, 0)
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAABAAEAAAAVAAAAAAABAAIAAAAVAAAAAAABAAMAAAAVAAAAAAABAAQAAAAVAAAAAAABAAUAAAAVAAAAAAABAAYAAAAVAAAAAAABAAcAAAASAAAAAAABAAgAAAAUAAEAAAABAAkAAAAVAAAAAAABAAoAAAAVAAAAAAABAAsAAAAVAAAAAAABAAwAAAAVAAAAAAABAA0AAAAVAAAAAAACAAEAAAAVAAAAAAACAAIAAAAQAAAAAAACAAMAAAAQAAAAAAACAAQAAAAQAAAAAAACAAUAAAAQAAAAAAACAAYAAAAUAAAAAAACAAcAAAAVAAAAAAACAAgAAAAVAAAAAAACAAkAAAASAAAAAAACAAoAAAAQAAAAAAACAAsAAAAQAAAAAAACAAwAAAAQAAAAAAACAA0AAAAVAAAAAAADAAEAAAAVAAAAAAADAAIAAAAVAAAAAAADAAMAAAAVAAAAAAADAAQAAAAVAAAAAAADAAUAAAAVAAAAAAADAAcAAAASAAAAAAADAAgAAAAUAAAAAAADAAkAAAAVAAAAAAADAAoAAAAVAAAAAAADAAsAAAAVAAAAAAADAAwAAAAVAAAAAAADAA0AAAAVAAAAAAAEAAEAAAAVAAAAAAAEAAIAAAAQAAAAAAAEAAMAAAAQAAAAAAAEAAQAAAAQAAAAAAAEAAUAAAAQAAAAAAAEAAYAAAAUAAAAAAAEAAcAAAASAAAAAAAEAAgAAAAUAAAAAAAEAAkAAAASAAAAAAAEAAoAAAAQAAAAAAAEAAsAAAAQAAAAAAAEAAwAAAAQAAAAAAAEAA0AAAAVAAAAAAAFAAEAAAAVAAAAAAAFAAIAAAAVAAAAAAAFAAMAAAAVAAAAAAAFAAQAAAAVAAAAAAAFAAUAAAAVAAAAAAAFAAYAAAAVAAAAAAAFAAcAAAAVAAAAAAAFAAgAAAAVAAAAAAAFAAkAAAAVAAAAAAAFAAoAAAAVAAAAAAAFAAsAAAAVAAAAAAAFAAwAAAAVAAAAAAAFAA0AAAAVAAAAAAAGAAEAAAAVAAAAAAAGAAIAAAAQAAAAAAAGAAMAAAAQAAAAAAAGAAQAAAAQAAAAAAAGAAUAAAAUAAAAAAAGAAYAAAASAAAAAAAGAAcAAAAUAAAAAAAGAAgAAAASAAAAAAAGAAkAAAAQAAAAAAAGAAoAAAAQAAAAAAAGAAsAAAAUAAAAAAAGAAwAAAAVAAAAAAAGAA0AAAAVAAAAAAAHAAEAAAAVAAAAAAAHAAIAAAAVAAAAAAAHAAMAAAAVAAAAAAAHAAQAAAAQAAEAAAAHAAUAAAAVAAAAAAAHAAYAAAAVAAAAAAAHAAcAAAAVAAAAAAAHAAgAAAAVAAAAAAAHAAkAAAAQAAAAAAAHAAoAAAAVAAAAAAAHAAsAAAAVAAAAAAAHAAwAAAAVAAAAAAAHAA0AAAAVAAAAAAAIAAEAAAAVAAAAAAAIAAIAAAAQAAAAAAAIAAMAAAAQAAAAAAAIAAQAAAAQAAAAAAAIAAUAAAAUAAAAAAAIAAYAAAASAAAAAAAIAAcAAAAUAAAAAAAIAAgAAAASAAAAAAAIAAkAAAAQAAAAAAAIAAoAAAAQAAAAAAAIAAsAAAAUAAAAAAAIAAwAAAAVAAAAAAAIAA0AAAAVAAAAAAAJAAEAAAAVAAAAAAAJAAMAAAAVAAAAAAAJAAQAAAAVAAAAAAAJAAUAAAAVAAAAAAAJAAYAAAAVAAAAAAAJAAcAAAAVAAAAAAAJAAgAAAAVAAAAAAAJAAkAAAAVAAAAAAAJAAoAAAAVAAAAAAAJAAsAAAAVAAAAAAAJAAwAAAAVAAAAAAAJAA0AAAAVAAAAAAAKAAEAAAAVAAAAAAAKAAIAAAAQAAAAAAAKAAMAAAAQAAAAAAAKAAQAAAAQAAAAAAAKAAUAAAAQAAAAAAAKAAYAAAAUAAAAAAAKAAcAAAASAAAAAAAKAAgAAAAUAAAAAAAKAAkAAAASAAAAAAAKAAoAAAAQAAAAAAAKAAsAAAAQAAAAAAAKAAwAAAAQAAAAAAAKAA0AAAAVAAAAAAALAAEAAAAVAAAAAAALAAIAAAAVAAAAAAALAAMAAAAVAAAAAAALAAQAAAAVAAAAAAALAAUAAAAVAAAAAAALAAYAAAAVAAAAAAALAAcAAAASAAAAAAALAAgAAAAUAAAAAAALAAkAAAAVAAAAAAALAAoAAAAVAAAAAAALAAsAAAAVAAAAAAALAAwAAAAVAAAAAAALAA0AAAAVAAAAAAAMAAEAAAAVAAAAAAAMAAIAAAAQAAAAAAAMAAMAAAAQAAAAAAAMAAQAAAAQAAAAAAAMAAUAAAAQAAAAAAAMAAYAAAAUAAAAAAAMAAcAAAAVAAAAAAAMAAgAAAAVAAAAAAAMAAkAAAASAAAAAAAMAAoAAAAQAAAAAAAMAAsAAAAQAAAAAAAMAAwAAAAQAAAAAAAMAA0AAAAVAAAAAAANAAEAAAAVAAAAAAANAAIAAAAVAAAAAAANAAMAAAAVAAAAAAANAAQAAAAVAAAAAAANAAUAAAAVAAAAAAANAAYAAAAVAAAAAAANAAcAAAASAAAAAAANAAgAAAAUAAEAAAANAAkAAAAVAAAAAAANAAoAAAAVAAAAAAANAAsAAAAVAAAAAAANAAwAAAAVAAAAAAANAA0AAAAVAAAAAAAJAAIAAAAVAAAAAAADAAYAAAAVAAAAAAA=")
 tile_set = SubResource("TileSet_qtu10")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+modulate = Color(1, 1, 1, 0.376471)
+position = Vector2(-8, 0)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAIAA0AAgATAAAAAAAGAA0AAgARAAAAAAAHAAwAAgASAAAAAAAHAA0AAgATAAIAAAAFAA0AAgAAAAAAAAAJAA0AAgAAAAgAAAABAAEAAgAMAAAAAAANAAEAAgAMAAAAAAAHAAEAAgAMAAAAAAA=")
+tile_set = SubResource("TileSet_am1vj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -378,8 +424,7 @@ offset_left = 448.0
 offset_top = 272.0
 offset_right = 624.0
 offset_bottom = 296.0
-theme_override_font_sizes/font_size = 8
-text = "Export Map"
+text = "EXPORT MAP"
 flat = true
 
 [node name="ImportButton" type="Button" parent="."]
@@ -388,20 +433,30 @@ offset_left = 448.0
 offset_top = 296.0
 offset_right = 624.0
 offset_bottom = 320.0
-theme_override_font_sizes/font_size = 8
-text = "Import Map"
+text = "IMPORT MAP"
 flat = true
 
-[node name="RichTextLabel" type="TextEdit" parent="."]
+[node name="TextEdit" type="TextEdit" parent="."]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 320.0
 offset_right = 624.0
 offset_bottom = 416.0
-theme_override_font_sizes/font_size = 6
 text = "DDDDDDDDDDDDDDD4D4D4D4D4D4DDD4D4D4D4D4D4DDD4D4D494D4D4DDD4D4D3D3D4D4DDD3D3D1D1D3D3DD1D11D3D3D11D1D8D33D1D1D33D8DD1D1D444D1D1DDD4D4D4D4D4D4DDD4D4D3D3D4D4DDD4D4DDDDD4D4DDDDDDDDDDDDDDDD"
+context_menu_enabled = false
 emoji_menu_enabled = false
 wrap_mode = 1
+
+[node name="ClipboardButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 416.0
+offset_right = 608.0
+offset_bottom = 432.0
+scale = Vector2(2, 2)
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_3ag6a")
+texture_pressed = SubResource("AtlasTexture_b3rfh")
 
 [node name="StageBox" type="SpinBox" parent="."]
 layout_mode = 0
@@ -422,12 +477,12 @@ max_value = 36.0
 value = 1.0
 rounded = true
 alignment = 1
-prefix = "Stage"
+prefix = "STAGE"
 
 [node name="Label" type="Label" parent="StageBox"]
 layout_mode = 0
 offset_left = 80.0
-offset_right = 176.0
+offset_right = 144.0
 offset_bottom = 32.0
 text = "308A"
 horizontal_alignment = 1
@@ -452,6 +507,21 @@ offset_right = 440.0
 offset_bottom = 448.0
 border_width = 0.0
 
+[node name="AudioChange" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6a6wx")
+
+[node name="AudioInvalid" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_iy58a")
+
+[node name="AudioSuccess" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_sky72")
+
+[node name="AudioCount" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_0ytqx")
+
+[node name="AudioDull" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_pxugv")
+
 [connection signal="pressed" from="EraserButton" to="." method="_on_eraser_button_pressed"]
 [connection signal="pressed" from="TileButton" to="." method="_on_tile_button_pressed"]
 [connection signal="pressed" from="TileButton2" to="." method="_on_tile_button_2_pressed"]
@@ -468,6 +538,7 @@ border_width = 0.0
 [connection signal="pressed" from="TileButton13" to="." method="_on_tile_button_13_pressed"]
 [connection signal="pressed" from="ExportButton" to="." method="_on_export_button_pressed"]
 [connection signal="pressed" from="ImportButton" to="." method="_on_import_button_pressed"]
+[connection signal="pressed" from="ClipboardButton" to="." method="_on_clipboard_button_pressed"]
 [connection signal="value_changed" from="StageBox" to="." method="_on_stage_box_value_changed"]
 [connection signal="mouse_entered" from="ReferenceRect" to="." method="_on_reference_rect_mouse_entered"]
 [connection signal="mouse_exited" from="ReferenceRect" to="." method="_on_reference_rect_mouse_exited"]
