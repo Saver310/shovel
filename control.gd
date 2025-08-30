@@ -28,6 +28,7 @@ func _process(_delta: float) -> void:
 			$TileMapLayer.set_cell($TileMapLayer.local_to_map($TileMapLayer.get_local_mouse_position()),0,atlas_coords)
 		elif mode == 1:
 			$TileMapLayer.set_cell($TileMapLayer.local_to_map($TileMapLayer.get_local_mouse_position()),0,Vector2i(21,0))
+	$PasteButton.visible = (DisplayServer.clipboard_get().length() == 182 or DisplayServer.clipboard_get().length() == 272) and not $TextEdit.text == DisplayServer.clipboard_get()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -192,6 +193,13 @@ func _on_clipboard_button_pressed() -> void:
 	$ErrorLabel.text = "COPIED MAP TO CLIPBOARD"
 	$Timer.start()
 	DisplayServer.clipboard_set($TextEdit.text)
+
+func _on_paste_button_pressed() -> void:
+	if not muted:
+		$AudioSuccess.play()
+	$ErrorLabel.text = "PASTED FROM CLIPBOARD"
+	$Timer.start()
+	$TextEdit.text = DisplayServer.clipboard_get()
 
 func _on_timer_timeout() -> void:
 	$ErrorLabel.text = ""

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://bku3xklxx3idi"]
+[gd_scene load_steps=55 format=4 uid="uid://bku3xklxx3idi"]
 
 [ext_resource type="Texture2D" uid="uid://bt3ovg6i73eju" path="res://battlecity.png" id="1_0fbet"]
 [ext_resource type="FontFile" uid="uid://den7xe7fqoot8" path="res://font.woff2" id="1_eh0v1"]
@@ -221,6 +221,14 @@ region = Rect2(352, 16, 16, 16)
 atlas = ExtResource("2_62e2m")
 region = Rect2(352, 16, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5axgr"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(352, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfgqd"]
+atlas = ExtResource("2_62e2m")
+region = Rect2(352, 32, 16, 16)
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -253,6 +261,7 @@ offset_bottom = 448.0
 color = Color(0, 0, 0, 1)
 
 [node name="MuteButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 608.0
 offset_right = 624.0
 offset_bottom = 16.0
@@ -471,6 +480,17 @@ action_mode = 0
 texture_normal = SubResource("AtlasTexture_3ag6a")
 texture_pressed = SubResource("AtlasTexture_b3rfh")
 
+[node name="PasteButton" type="TextureButton" parent="."]
+visible = false
+offset_left = 592.0
+offset_top = 384.0
+offset_right = 608.0
+offset_bottom = 400.0
+scale = Vector2(2, 2)
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_5axgr")
+texture_pressed = SubResource("AtlasTexture_wfgqd")
+
 [node name="StageBox" type="SpinBox" parent="."]
 layout_mode = 0
 offset_left = 448.0
@@ -570,6 +590,7 @@ offset = Vector2(320, 240)
 [connection signal="pressed" from="ExportButton" to="." method="_on_export_button_pressed"]
 [connection signal="pressed" from="ImportButton" to="." method="_on_import_button_pressed"]
 [connection signal="pressed" from="ClipboardButton" to="." method="_on_clipboard_button_pressed"]
+[connection signal="pressed" from="PasteButton" to="." method="_on_paste_button_pressed"]
 [connection signal="value_changed" from="StageBox" to="." method="_on_stage_box_value_changed"]
 [connection signal="mouse_entered" from="ReferenceRect" to="." method="_on_reference_rect_mouse_entered"]
 [connection signal="mouse_exited" from="ReferenceRect" to="." method="_on_reference_rect_mouse_exited"]
