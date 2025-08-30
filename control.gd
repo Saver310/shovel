@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 		elif mode == 1:
 			$TileMapLayer.set_cell($TileMapLayer.local_to_map($TileMapLayer.get_local_mouse_position()),0,Vector2i(21,0))
 	$PasteButton.visible = (DisplayServer.clipboard_get().length() == 182 or DisplayServer.clipboard_get().length() == 272) and not $TextEdit.text == DisplayServer.clipboard_get()
-
+	$ClipboardButton.visible = not $TextEdit.text == DisplayServer.clipboard_get()
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
@@ -195,11 +195,8 @@ func _on_clipboard_button_pressed() -> void:
 	DisplayServer.clipboard_set($TextEdit.text)
 
 func _on_paste_button_pressed() -> void:
-	if not muted:
-		$AudioSuccess.play()
-	$ErrorLabel.text = "PASTED FROM CLIPBOARD"
-	$Timer.start()
 	$TextEdit.text = DisplayServer.clipboard_get()
+	_on_import_button_pressed()
 
 func _on_timer_timeout() -> void:
 	$ErrorLabel.text = ""

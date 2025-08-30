@@ -470,6 +470,7 @@ emoji_menu_enabled = false
 wrap_mode = 1
 
 [node name="ClipboardButton" type="TextureButton" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 592.0
 offset_top = 416.0
@@ -482,6 +483,7 @@ texture_pressed = SubResource("AtlasTexture_b3rfh")
 
 [node name="PasteButton" type="TextureButton" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 592.0
 offset_top = 384.0
 offset_right = 608.0
