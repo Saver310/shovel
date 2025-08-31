@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://bku3xklxx3idi"]
+[gd_scene load_steps=56 format=4 uid="uid://bku3xklxx3idi"]
 
 [ext_resource type="Texture2D" uid="uid://bt3ovg6i73eju" path="res://battlecity.png" id="1_0fbet"]
 [ext_resource type="FontFile" uid="uid://den7xe7fqoot8" path="res://font.woff2" id="1_eh0v1"]
@@ -228,6 +228,10 @@ region = Rect2(352, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfgqd"]
 atlas = ExtResource("2_62e2m")
 region = Rect2(352, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkes7"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(256, 0, 16, 16)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -524,7 +528,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 32.0
@@ -533,6 +536,12 @@ offset_bottom = 48.0
 scale = Vector2(2, 2)
 texture = ExtResource("6_fj5cn")
 stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+modulate = Color(1, 1, 1, 0.501961)
+show_behind_parent = true
+layout_mode = 0
+texture = SubResource("AtlasTexture_jkes7")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 layout_mode = 0

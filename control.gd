@@ -30,6 +30,7 @@ func _process(_delta: float) -> void:
 			$TileMapLayer.set_cell($TileMapLayer.local_to_map($TileMapLayer.get_local_mouse_position()),0,Vector2i(21,0))
 	$PasteButton.visible = (DisplayServer.clipboard_get().length() == 182 or DisplayServer.clipboard_get().length() == 272) and not $TextEdit.text == DisplayServer.clipboard_get()
 	$ClipboardButton.visible = not $TextEdit.text == DisplayServer.clipboard_get()
+	$TextureRect/TextureRect.texture.region = Rect2(atlas_coords.x*16,atlas_coords.y*16,16,16)
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
